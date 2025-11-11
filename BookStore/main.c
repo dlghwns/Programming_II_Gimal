@@ -8,14 +8,42 @@
 #define CLS system("cls")
 #define PAUSE system("pause>nul")
 
+
+void check_file();
 void show_menu();
 int check_menu_click(COORD pos);
 
 
-
+    
 int main(void) {
+	check_file();
     show_menu();
     return 0;
+}
+
+void check_file() {
+    char folder[MAX_PATH];
+    char file[MAX_PATH];
+
+    char* appdata = getenv("APPDATA");
+    if (!appdata) return;  // APPDATA 환경변수 없으면 종료
+
+    sprintf(folder, "%s\\SW_BOOKSTORE", appdata);
+
+    // 폴더가 없으면 생성
+    if (GetFileAttributesA(folder) == INVALID_FILE_ATTRIBUTES) {
+        if (!CreateDirectoryA(folder, NULL)) {
+            printf("폴더 생성 실패, 오류코드: %lu\n", GetLastError());
+            return;
+        }
+    }
+
+    // 파일 경로 생성
+    sprintf(file, "%s\\userdata.txt", folder);
+
+    // 파일 없으면 생성
+    FILE* fp = fopen(file, "a");
+    if (fp) fclose(fp);
 }
 
 void show_menu() {
