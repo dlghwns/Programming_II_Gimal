@@ -96,7 +96,7 @@ int check_menu_click(COORD pos) {
         SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         printf("1. 로그인     (Login)");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-        Sleep(270);
+        Sleep(170);
 
         login_menu();
         return 1;
@@ -106,7 +106,7 @@ int check_menu_click(COORD pos) {
         SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         printf("2. 회원가입   (Sign Up)");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-        Sleep(270);
+        Sleep(170);
         register_menu();
         return 1;
     }
