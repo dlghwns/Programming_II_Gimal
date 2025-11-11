@@ -78,7 +78,7 @@ int check_menu_click(COORD pos) {
         printf("2. 회원가입   (Sign Up)");
         SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         Sleep(270);
-        //register_menu();
+        register_menu();
         return 1;
     }
     else if ((pos.X >= 46 && pos.X <= 68) && (pos.Y >= 17 && pos.Y <= 18)) {
