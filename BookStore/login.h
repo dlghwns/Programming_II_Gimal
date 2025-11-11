@@ -1,3 +1,3 @@
 #pragma once
 void login_menu();
-void check_login(char id[], char pw[]);
+int check_login(char id[], char pw[]);

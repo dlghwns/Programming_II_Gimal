@@ -14,6 +14,7 @@ void register_success();
 
 void register_menu()
 {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
     GetConsoleMode(hInput, &mode);
@@ -87,8 +88,10 @@ void register_menu()
 
     // 아이디 확인
     if (strcmp(id, id_c) != 0) {
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
         gotoxy(x + 9, 20); printf("아이디가 일치하지 않습니다.");
         gotoxy(x + 13, 21); printf("다시 시도해주세요.");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         PAUSE;
         register_menu();
         return;
@@ -96,8 +99,10 @@ void register_menu()
 
     // 이미 존재하는 ID 확인
     if (check_already_id(id)) {
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
         gotoxy(x + 9, 20); printf("이미 존재하는 아이디입니다.");
         gotoxy(x + 13, 21); printf("다시 시도해주세요.");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         PAUSE;
         register_menu();
         return;
@@ -149,12 +154,15 @@ void check_register(char id[], char pw[])
 void register_success()
 {
     int x = 35, y = 5;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     gotoxy(x, y++); printf("┌──────────────────────────────────────────┐");
     for (int i = 0; i < 18; i++) { gotoxy(x, y++); printf("│                                          │"); }
     gotoxy(x, y++); printf("└──────────────────────────────────────────┘");
     gotoxy(x + 16, 6); printf("☆  회원가입 ☆");
-	gotoxy(x + 10, 12); printf("회원가입이 완료되었습니다!");
 
+    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+	gotoxy(x + 10, 12); printf("회원가입이 완료되었습니다!");
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
     PAUSE;
 	show_menu();
 }
