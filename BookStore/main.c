@@ -4,6 +4,7 @@
 #include <time.h>
 #include "fun.h"
 #include "login.h"
+#include "register.h"
 
 #define CLS system("cls")
 #define PAUSE system("pause>nul")

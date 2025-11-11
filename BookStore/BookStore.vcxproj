@@ -128,11 +128,13 @@
     </ClCompile>
     <ClCompile Include="main.c" />
     <ClCompile Include="fun.c" />
+    <ClCompile Include="register.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fun.h" />
     <ClInclude Include="login.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="register.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="틀.txst" />
