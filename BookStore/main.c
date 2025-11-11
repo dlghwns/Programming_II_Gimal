@@ -1,35 +1,94 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "login.h"
 #include <stdio.h>
-#include <Windows.h>
+#include <windows.h>
+#include <time.h>
+#include "fun.h"
+#include "login.h"
 
-void check_file();
+#define CLS system("cls")
+#define PAUSE system("pause>nul")
+
+void show_menu();
+int check_menu_click(COORD pos);
 
 
-int main()
-{
-    char user_id[20] = "";
-	check_file();
 
-
-	return 0;
+int main(void) {
+    show_menu();
+    return 0;
 }
 
+void show_menu() {
+    CLS;
+    int x = 35, y = 5;
 
-
-void check_file()    // 순서1
-{
-    FILE* fp = fopen("userdata.txt", "r"); // 읽기 모드로 열기 시도
-    if (fp == NULL) {
-        fp = fopen("userdata.txt", "w");
-        return;
+    gotoxy(x, y++);
+    printf("┌──────────────────────────────────────────┐");
+    for (int i = 0; i < 18; i++) {
+        gotoxy(x, y++);
+        printf("│                                          │");
     }
+    gotoxy(x, y++);
+    printf("└──────────────────────────────────────────┘");
 
+    gotoxy(x + 15, 6);  printf("☆  서원 문고 ☆");
+    gotoxy(x + 12, 10); printf("1. 로그인     (Login)");
+    gotoxy(x + 12, 14); printf("2. 회원가입   (Sign Up)");
+    gotoxy(x + 12, 18); printf("3. 종료       (Exit)");
+
+
+    HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+    INPUT_RECORD rec;
+    DWORD read;
+    SetConsoleMode(hInput, ENABLE_EXTENDED_FLAGS | ENABLE_MOUSE_INPUT);
+
+
+
+
+    while (1) {
+        ReadConsoleInput(hInput, &rec, 1, &read);
+
+        if (rec.EventType == MOUSE_EVENT) {
+            if (rec.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED) {
+                COORD pos = rec.Event.MouseEvent.dwMousePosition;
+                if (check_menu_click(pos)) break;
+            }
+        }
+
+    }
+}
+
+int check_menu_click(COORD pos) {
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+
+    if ((pos.X >= 46 && pos.X <= 68) && (pos.Y >= 9 && pos.Y <= 10)) {
+        gotoxy(47, 10);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        printf("1. 로그인     (Login)");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        Sleep(270);
+
+        login_menu();
+        return 1;
+    }
+    else if ((pos.X >= 46 && pos.X <= 68) && (pos.Y >= 13 && pos.Y <= 14)) {
+        gotoxy(47, 14);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        printf("2. 회원가입   (Sign Up)");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        Sleep(270);
+        //register_menu();
+        return 1;
+    }
+    else if ((pos.X >= 46 && pos.X <= 68) && (pos.Y >= 17 && pos.Y <= 18)) {
+        gotoxy(47, 18);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+        printf("3. 종료       (Exit)");
+        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        exit(0);
+    }
     else {
-        fclose(fp);
-        return;
+		return 0;
     }
-
 }
-
-

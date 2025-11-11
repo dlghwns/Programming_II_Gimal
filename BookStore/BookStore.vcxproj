@@ -123,11 +123,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="login.c" />
+    <ClCompile Include="login.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main.c" />
+    <ClCompile Include="fun.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="fun.h" />
     <ClInclude Include="login.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="틀.txst" />
