@@ -8,6 +8,7 @@
 #define CLS system("cls")
 #define PAUSE system("pause>nul")
 void check_login(char id[], char pw[]);
+void check_register(char id[], char pw[]);
 
 
 void login_menu()
