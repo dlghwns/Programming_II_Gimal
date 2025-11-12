@@ -16,6 +16,9 @@
     <Filter Include="소스 파일\main">
       <UniqueIdentifier>{d4b9b7a9-b78e-4cf5-bdab-301216946cbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\user">
+      <UniqueIdentifier>{37d6806b-a54e-4ce6-a082-4d66656b4bc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -30,6 +33,9 @@
     <ClCompile Include="register.c">
       <Filter>소스 파일\main</Filter>
     </ClCompile>
+    <ClCompile Include="user_menu.c">
+      <Filter>소스 파일\user</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="login.h">
@@ -42,6 +48,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="register.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="user_menu.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

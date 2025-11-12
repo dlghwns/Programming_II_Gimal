@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "fun.h"
 #include "main.h"
+#include "user_menu.h"
 
 #define CLS system("cls")
 #define PAUSE system("pause>nul")
@@ -94,7 +95,7 @@ void login_menu()
             SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
             gotoxy(x + 14, 12); printf("%s님 환영합니다!!", id);
             SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-            PAUSE;
+            user_menu(id);
             return;
         }
         else
