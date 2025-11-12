@@ -48,6 +48,7 @@ void login_menu()
         // 입력 처리
         while (step < 2)
         {
+            enable_mouse_input();
             if (_kbhit())
             {
                 c = _getch();
