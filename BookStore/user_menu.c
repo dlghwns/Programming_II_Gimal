@@ -20,4 +20,6 @@ void user_menu(char id[])
 		gotoxy(x, y++);
 		printf("¦¢											     ¦¢");
 	}
+
+	system("pause>nul");
 }
